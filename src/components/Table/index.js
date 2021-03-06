@@ -80,8 +80,8 @@ class Table extends React.Component {
   render() {
     return (
       <div>
-        <Search handleInputChange={this.handleInputChange}
-          search={this.state.search} />
+        {/* <Search handleInputChange={this.handleInputChange}
+          search={this.state.search} /> */}
 
         <div className="table-responsive">
         <table className="table table-striped table-resposive text-center table-hover">

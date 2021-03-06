@@ -5,7 +5,7 @@ import Search from "./pages/Search"
 import Navbar from "./components/Navbar";
 import Wrapper from "./components/Wrapper";
 import Footer from "./components/Footer";
-
+import PagePicker from './components/pagePicker';
 function App() {
 console.log("app running");
   return (
@@ -13,7 +13,7 @@ console.log("app running");
       <div>
         <Navbar />
         <Wrapper>
-          <Home />
+          <PagePicker />
         </Wrapper>
         <Footer />
       </div>
