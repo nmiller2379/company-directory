@@ -7,6 +7,7 @@ import Wrapper from "./components/Wrapper";
 import Footer from "./components/Footer";
 
 function App() {
+console.log("app running");
   return (
     <Router>
       <div>

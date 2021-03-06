@@ -16,6 +16,7 @@ class Table extends React.Component {
 
   //Api call for employee list
   componentDidMount() {
+    console.log("table loaded");
     API.getEmployeeList()
       .then(res => {
         this.setState({ results: res.data.results })
