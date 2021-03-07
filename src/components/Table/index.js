@@ -2,8 +2,6 @@ import React from "react";
 import API from "../../utils/API";
 import Search from "../SearchBar/index";
 import "./style.css";
-
-//npm package to reformat DOB
 import DateFormat from 'dateformat';
 
 class Table extends React.Component {
@@ -14,7 +12,6 @@ class Table extends React.Component {
     search: ""
   }
 
-  //Api call for employee list
   componentDidMount() {
     console.log("table loaded");
     API.getEmployeeList()
@@ -23,9 +20,7 @@ class Table extends React.Component {
         console.log(this.state.results)
       }).catch(err => console.log(err))
   }
-
-
-  //Handle input in search bar 
+ 
   handleInputChange = event => {
     if (event.target.name === "search") {
       const searchTerm = event.target.value.toLowerCase();
@@ -35,7 +30,6 @@ class Table extends React.Component {
     }
   }
 
-  //first name sort
   sortByFName = () => {
     const sortedEmployees = this.state.results.sort((a, b) => {
       if (b.name.first > a.name.first) {
@@ -55,8 +49,7 @@ class Table extends React.Component {
     }
     this.setState({ results: sortedEmployees })
   }
-
-  //Last name sort 
+ 
   sortByLName = () => {
     const sortedEmployees = this.state.results.sort((a, b) => {
       if (b.name.last > a.name.last) {
@@ -75,13 +68,12 @@ class Table extends React.Component {
     }
     this.setState({ results: sortedEmployees })
   }
-
-  //Render items 
+ 
   render() {
     return (
       <div>
-        {/* <Search handleInputChange={this.handleInputChange}
-          search={this.state.search} /> */}
+        <Search handleInputChange={this.handleInputChange}
+          search={this.state.search} />
 
         <div className="table-responsive">
         <table className="table table-striped table-resposive text-center table-hover">
@@ -96,12 +88,12 @@ class Table extends React.Component {
               </tr>
             </thead>
 
-            { //First Name sort
+            { 
               this.state.results && this.state.results.map(item =>
                 item.name.first.toLowerCase().includes(this.state.search) ?
                   <tbody key={item.login.uuid}>
                     <tr>
-                      <td ><img src={item.picture.thumbnail} className="rounded-circle" alt="thumbnail" /></td>
+                      <td ><img src={item.picture.thumbnail} alt="thumbnail" /></td>
                       <td >{item.name.first}</td>
                       <td >{item.name.last}</td>
                       <td >{item.phone}</td>
@@ -111,11 +103,11 @@ class Table extends React.Component {
                   </tbody>
 
                   :
-                  //Last Name sort
+                  
                   item.name.last.toLowerCase().includes(this.state.search) ?
                     <tbody key={item.login.uuid}>
                       <tr>
-                      <td ><img src={item.picture.thumbnail} className="rounded-circle" alt="thumbnail" /></td>
+                      <td ><img src={item.picture.thumbnail} alt="thumbnail" /></td>
                         <td >{item.name.first}</td>
                         <td >{item.name.last}</td>
                         <td >{item.phone} </td>
